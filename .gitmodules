@@ -1,0 +1,6 @@
+[submodule "wise-platform-samples"]
+	path = wise-platform-samples
+	url = https://github.com/transferwise/wise-platform-samples.git
+[submodule "public-api-postman-collection"]
+	path = public-api-postman-collection
+	url = https://github.com/transferwise/public-api-postman-collection.git

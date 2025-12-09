@@ -1,0 +1,26 @@
+{
+  "name": "wise-rs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParapluOU/wise-rs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ParapluOU/wise-rs/issues"
+  },
+  "homepage": "https://github.com/ParapluOU/wise-rs#readme",
+  "description": "",
+  "dependencies": {
+    "playwright": "^1.57.0"
+  }
+}
