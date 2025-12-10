@@ -1,13 +1,39 @@
 //! CLI command implementations.
 
+pub mod activities;
+pub mod addresses;
 pub mod balances;
+pub mod bank_details;
+pub mod card_orders;
+pub mod card_transactions;
+pub mod cards;
+pub mod cases;
+pub mod currencies;
+pub mod direct_debits;
+pub mod disputes;
 pub mod profiles;
+pub mod quotes;
 pub mod rates;
+pub mod recipients;
+pub mod statements;
 pub mod transfers;
 pub mod user;
 
+pub use activities::ActivitiesCommands;
+pub use addresses::AddressesCommands;
 pub use balances::BalancesCommands;
+pub use bank_details::BankDetailsCommands;
+pub use card_orders::CardOrdersCommands;
+pub use card_transactions::CardTransactionsCommands;
+pub use cards::CardsCommands;
+pub use cases::CasesCommands;
+pub use currencies::CurrenciesCommands;
+pub use direct_debits::DirectDebitsCommands;
+pub use disputes::DisputesCommands;
 pub use profiles::ProfilesCommands;
+pub use quotes::QuotesCommands;
 pub use rates::RatesCommands;
+pub use recipients::RecipientsCommands;
+pub use statements::StatementsCommands;
 pub use transfers::TransfersCommands;
 pub use user::UserCommands;

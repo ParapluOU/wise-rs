@@ -2702,6 +2702,7 @@ name = "wise-cli"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "chrono",
  "clap",
  "directories",
  "serde",
@@ -2710,6 +2711,7 @@ dependencies = [
  "toml",
  "tracing",
  "tracing-subscriber",
+ "uuid",
  "wise-client",
 ]
 
@@ -2735,6 +2737,7 @@ name = "wise-mcp"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "chrono",
  "rmcp",
  "secrecy",
  "serde",
@@ -2742,6 +2745,7 @@ dependencies = [
  "tokio",
  "tracing",
  "tracing-subscriber",
+ "uuid",
  "wise-client",
 ]
 

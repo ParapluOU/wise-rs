@@ -1,19 +1,47 @@
 //! Data models for the Wise API.
 
+mod activity;
+mod address;
 mod balance;
+mod bank_details;
+mod batch;
+mod card;
+mod card_order;
+mod card_transaction;
+mod case;
+mod contact;
 mod currency;
+mod direct_debit;
+mod dispute;
 mod profile;
 mod quote;
 mod rate;
 mod recipient;
+mod settlement;
+mod statement;
+mod three_ds;
 mod transfer;
 mod user;
 
+pub use activity::*;
+pub use address::*;
 pub use balance::*;
+pub use bank_details::*;
+pub use batch::*;
+pub use card::*;
+pub use card_order::*;
+pub use card_transaction::*;
+pub use case::*;
+pub use contact::*;
 pub use currency::*;
+pub use direct_debit::*;
+pub use dispute::*;
 pub use profile::*;
 pub use quote::*;
 pub use rate::*;
 pub use recipient::*;
+pub use settlement::*;
+pub use statement::*;
+pub use three_ds::*;
 pub use transfer::*;
 pub use user::*;

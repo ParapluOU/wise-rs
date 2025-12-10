@@ -6,9 +6,13 @@ use serde::de::DeserializeOwned;
 use serde::Serialize;
 
 use crate::api::{
-    BalancesApi, BalancesApiMut, CurrenciesApi, ProfilesApi, ProfilesApiMut, QuotesApi,
-    QuotesApiMut, RatesApi, RecipientsApi, RecipientsApiMut, TransfersApi, TransfersApiMut,
-    UserApi, UserApiMut,
+    ActivitiesApi, AddressesApi, AddressesApiMut, BalancesApi, BalancesApiMut, BankDetailsApi,
+    BankDetailsApiMut, BatchGroupsApi, BatchGroupsApiMut, CardOrdersApi, CardOrdersApiMut,
+    CardTransactionsApi, CardsApi, CardsApiMut, CasesApi, CasesApiMut, ContactsApiMut,
+    CurrenciesApi, DirectDebitsApi, DirectDebitsApiMut, DisputesApi, DisputesApiMut, ProfilesApi,
+    ProfilesApiMut, QuotesApi, QuotesApiMut, RatesApi, RecipientsApi, RecipientsApiMut,
+    SettlementsApiMut, StatementsApi, ThreeDSecureApiMut, TransfersApi, TransfersApiMut, UserApi,
+    UserApiMut,
 };
 use crate::config::{AuthConfig, ClientConfig};
 use crate::error::{ApiErrorResponse, Error, Result};
@@ -248,6 +252,83 @@ impl ReadOnlyClient {
             client: &self.inner,
         }
     }
+
+    /// Access activity endpoints (read-only).
+    pub fn activities(&self) -> ActivitiesApi<'_> {
+        ActivitiesApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access address endpoints (read-only).
+    pub fn addresses(&self) -> AddressesApi<'_> {
+        AddressesApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access balance statement endpoints (read-only).
+    pub fn statements(&self) -> StatementsApi<'_> {
+        StatementsApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access bank account details endpoints (read-only).
+    pub fn bank_details(&self) -> BankDetailsApi<'_> {
+        BankDetailsApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access batch group endpoints (read-only).
+    pub fn batch_groups(&self) -> BatchGroupsApi<'_> {
+        BatchGroupsApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access card endpoints (read-only).
+    pub fn cards(&self) -> CardsApi<'_> {
+        CardsApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access card order endpoints (read-only).
+    pub fn card_orders(&self) -> CardOrdersApi<'_> {
+        CardOrdersApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access card transaction endpoints (read-only).
+    pub fn card_transactions(&self) -> CardTransactionsApi<'_> {
+        CardTransactionsApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access partner cases endpoints (read-only).
+    pub fn cases(&self) -> CasesApi<'_> {
+        CasesApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access direct debit endpoints (read-only).
+    pub fn direct_debits(&self) -> DirectDebitsApi<'_> {
+        DirectDebitsApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access disputes endpoints (read-only).
+    pub fn disputes(&self) -> DisputesApi<'_> {
+        DisputesApi {
+            client: &self.inner,
+        }
+    }
 }
 
 /// Full-access client for the Wise API.
@@ -344,6 +425,104 @@ impl FullClient {
         }
     }
 
+    /// Access activity endpoints (read-only).
+    pub fn activities(&self) -> ActivitiesApi<'_> {
+        ActivitiesApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access address endpoints (full access).
+    pub fn addresses(&self) -> AddressesApiMut<'_> {
+        AddressesApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access balance statement endpoints (read-only).
+    pub fn statements(&self) -> StatementsApi<'_> {
+        StatementsApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access bank account details endpoints (full access).
+    pub fn bank_details(&self) -> BankDetailsApiMut<'_> {
+        BankDetailsApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access batch group endpoints (full access).
+    pub fn batch_groups(&self) -> BatchGroupsApiMut<'_> {
+        BatchGroupsApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access bulk settlement endpoints (full access).
+    pub fn settlements(&self) -> SettlementsApiMut<'_> {
+        SettlementsApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access card endpoints (full access).
+    pub fn cards(&self) -> CardsApiMut<'_> {
+        CardsApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access card order endpoints (full access).
+    pub fn card_orders(&self) -> CardOrdersApiMut<'_> {
+        CardOrdersApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access card transaction endpoints (read-only).
+    pub fn card_transactions(&self) -> CardTransactionsApi<'_> {
+        CardTransactionsApi {
+            client: &self.inner,
+        }
+    }
+
+    /// Access 3D Secure endpoints (full access).
+    pub fn three_d_secure(&self) -> ThreeDSecureApiMut<'_> {
+        ThreeDSecureApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access partner cases endpoints (full access).
+    pub fn cases(&self) -> CasesApiMut<'_> {
+        CasesApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access contact endpoints (full access).
+    pub fn contacts(&self) -> ContactsApiMut<'_> {
+        ContactsApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access direct debit endpoints (full access).
+    pub fn direct_debits(&self) -> DirectDebitsApiMut<'_> {
+        DirectDebitsApiMut {
+            client: &self.inner,
+        }
+    }
+
+    /// Access disputes endpoints (full access).
+    pub fn disputes(&self) -> DisputesApiMut<'_> {
+        DisputesApiMut {
+            client: &self.inner,
+        }
+    }
+
     /// Get a read-only view of this client.
     ///
     /// Useful when you need to pass the client to code that should only read.
@@ -414,6 +593,83 @@ impl<'a> ReadOnlyClientRef<'a> {
     /// Access currency endpoints.
     pub fn currencies(&self) -> CurrenciesApi<'_> {
         CurrenciesApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access activity endpoints (read-only).
+    pub fn activities(&self) -> ActivitiesApi<'_> {
+        ActivitiesApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access address endpoints (read-only).
+    pub fn addresses(&self) -> AddressesApi<'_> {
+        AddressesApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access balance statement endpoints (read-only).
+    pub fn statements(&self) -> StatementsApi<'_> {
+        StatementsApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access bank account details endpoints (read-only).
+    pub fn bank_details(&self) -> BankDetailsApi<'_> {
+        BankDetailsApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access batch group endpoints (read-only).
+    pub fn batch_groups(&self) -> BatchGroupsApi<'_> {
+        BatchGroupsApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access card endpoints (read-only).
+    pub fn cards(&self) -> CardsApi<'_> {
+        CardsApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access card order endpoints (read-only).
+    pub fn card_orders(&self) -> CardOrdersApi<'_> {
+        CardOrdersApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access card transaction endpoints (read-only).
+    pub fn card_transactions(&self) -> CardTransactionsApi<'_> {
+        CardTransactionsApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access partner cases endpoints (read-only).
+    pub fn cases(&self) -> CasesApi<'_> {
+        CasesApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access direct debit endpoints (read-only).
+    pub fn direct_debits(&self) -> DirectDebitsApi<'_> {
+        DirectDebitsApi {
+            client: self.inner,
+        }
+    }
+
+    /// Access disputes endpoints (read-only).
+    pub fn disputes(&self) -> DisputesApi<'_> {
+        DisputesApi {
             client: self.inner,
         }
     }

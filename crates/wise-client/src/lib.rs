@@ -92,5 +92,6 @@ mod config;
 pub mod error;
 pub mod models;
 
+pub use api::ListActivitiesParams;
 pub use client::{FullClient, ReadOnlyClient, ReadOnlyClientRef};
 pub use config::{AuthConfig, ClientConfig, Environment};

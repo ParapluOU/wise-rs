@@ -1,19 +1,47 @@
 //! API endpoint implementations organized by resource.
 
+mod activities;
+mod addresses;
 mod balances;
+mod bank_details;
+mod batch;
+mod card_orders;
+mod card_transactions;
+mod cards;
+mod cases;
+mod contacts;
 mod currencies;
+mod direct_debits;
+mod disputes;
 mod profiles;
 mod quotes;
 mod rates;
 mod recipients;
+mod settlements;
+mod statements;
+mod three_ds;
 mod transfers;
 mod user;
 
+pub use activities::{ActivitiesApi, ListActivitiesParams};
+pub use addresses::{AddressesApi, AddressesApiMut};
 pub use balances::{BalancesApi, BalancesApiMut};
+pub use bank_details::{BankDetailsApi, BankDetailsApiMut};
+pub use batch::{BatchGroupsApi, BatchGroupsApiMut};
+pub use card_orders::{CardOrdersApi, CardOrdersApiMut};
+pub use card_transactions::CardTransactionsApi;
+pub use cards::{CardsApi, CardsApiMut};
+pub use cases::{CasesApi, CasesApiMut};
+pub use contacts::ContactsApiMut;
 pub use currencies::CurrenciesApi;
+pub use direct_debits::{DirectDebitsApi, DirectDebitsApiMut};
+pub use disputes::{DisputesApi, DisputesApiMut};
 pub use profiles::{ProfilesApi, ProfilesApiMut};
 pub use quotes::{QuotesApi, QuotesApiMut};
 pub use rates::RatesApi;
 pub use recipients::{RecipientsApi, RecipientsApiMut};
+pub use settlements::SettlementsApiMut;
+pub use statements::StatementsApi;
+pub use three_ds::ThreeDSecureApiMut;
 pub use transfers::{TransfersApi, TransfersApiMut};
 pub use user::{UserApi, UserApiMut};
