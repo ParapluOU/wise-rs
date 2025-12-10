@@ -1,0 +1,23 @@
+[package]
+name = "wise-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Command-line interface for the Wise Platform API"
+
+[[bin]]
+name = "wise"
+path = "src/main.rs"
+
+[dependencies]
+wise-client = { path = "../wise-client" }
+clap = { version = "4.5", features = ["derive"] }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+toml = "0.8"
+directories = "5.0"
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+anyhow = "1.0"

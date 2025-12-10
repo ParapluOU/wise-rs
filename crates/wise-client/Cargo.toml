@@ -1,0 +1,22 @@
+[package]
+name = "wise-client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Async Rust client for the Wise Platform API"
+
+[dependencies]
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+chrono = { version = "0.4", features = ["serde"] }
+rust_decimal = { version = "1.37", features = ["serde"] }
+secrecy = { version = "0.10", features = ["serde"] }
+url = "2.5"
+uuid = { version = "1.11", features = ["serde"] }
+
+[dev-dependencies]
+tokio = { workspace = true }
