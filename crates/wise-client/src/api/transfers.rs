@@ -65,6 +65,13 @@ impl<'a> TransfersApi<'a> {
             .get(&format!("/v1/transfers/{}", transfer_id))
             .await
     }
+
+    /// Get transfer delivery estimate.
+    pub async fn get_delivery_estimate(&self, transfer_id: i64) -> Result<serde_json::Value> {
+        self.client
+            .get(&format!("/v1/delivery-estimates/{}", transfer_id))
+            .await
+    }
 }
 
 /// Full Transfer API operations (includes write operations).
@@ -160,6 +167,13 @@ impl<'a> TransfersApiMut<'a> {
     pub async fn cancel(&self, transfer_id: i64) -> Result<Transfer> {
         self.client
             .put(&format!("/v1/transfers/{}/cancel", transfer_id), &())
+            .await
+    }
+
+    /// Get transfer delivery estimate.
+    pub async fn get_delivery_estimate(&self, transfer_id: i64) -> Result<serde_json::Value> {
+        self.client
+            .get(&format!("/v1/delivery-estimates/{}", transfer_id))
             .await
     }
 }

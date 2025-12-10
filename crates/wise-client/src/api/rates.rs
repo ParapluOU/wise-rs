@@ -73,4 +73,30 @@ impl<'a> RatesApi<'a> {
             }
         })
     }
+
+    /// Get historical rate data over a time range.
+    ///
+    /// # Arguments
+    /// * `source` - Source currency code
+    /// * `target` - Target currency code
+    /// * `from` - Start of time range
+    /// * `to` - End of time range
+    /// * `group` - Grouping interval ("day", "hour", "minute")
+    pub async fn history(
+        &self,
+        source: &str,
+        target: &str,
+        from: DateTime<Utc>,
+        to: DateTime<Utc>,
+        group: &str,
+    ) -> Result<Vec<Rate>> {
+        let from_str = from.format("%Y-%m-%dT%H:%M:%S+00:00").to_string();
+        let to_str = to.format("%Y-%m-%dT%H:%M:%S+00:00").to_string();
+        self.client
+            .get(&format!(
+                "/v1/rates?source={}&target={}&from={}&to={}&group={}",
+                source, target, from_str, to_str, group
+            ))
+            .await
+    }
 }

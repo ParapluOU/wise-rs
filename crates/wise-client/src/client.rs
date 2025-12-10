@@ -8,7 +8,7 @@ use serde::Serialize;
 use crate::api::{
     BalancesApi, BalancesApiMut, CurrenciesApi, ProfilesApi, ProfilesApiMut, QuotesApi,
     QuotesApiMut, RatesApi, RecipientsApi, RecipientsApiMut, TransfersApi, TransfersApiMut,
-    UserApi,
+    UserApi, UserApiMut,
 };
 use crate::config::{AuthConfig, ClientConfig};
 use crate::error::{ApiErrorResponse, Error, Result};
@@ -68,7 +68,7 @@ impl ClientInner {
     }
 
     /// Perform a POST request.
-    pub(crate) async fn post<T: DeserializeOwned, B: Serialize>(
+    pub(crate) async fn post<T: DeserializeOwned, B: Serialize + ?Sized>(
         &self,
         path: &str,
         body: &B,
@@ -81,7 +81,7 @@ impl ClientInner {
     }
 
     /// Perform a PUT request.
-    pub(crate) async fn put<T: DeserializeOwned, B: Serialize>(
+    pub(crate) async fn put<T: DeserializeOwned, B: Serialize + ?Sized>(
         &self,
         path: &str,
         body: &B,
@@ -90,6 +90,19 @@ impl ClientInner {
         tracing::debug!("PUT {}", url);
 
         let response = self.http.put(&url).json(body).send().await?;
+        self.handle_response(response).await
+    }
+
+    /// Perform a PATCH request.
+    pub(crate) async fn patch<T: DeserializeOwned, B: Serialize + ?Sized>(
+        &self,
+        path: &str,
+        body: &B,
+    ) -> Result<T> {
+        let url = format!("{}{}", self.base_url, path);
+        tracing::debug!("PATCH {}", url);
+
+        let response = self.http.patch(&url).json(body).send().await?;
         self.handle_response(response).await
     }
 
@@ -275,9 +288,9 @@ impl FullClient {
         })
     }
 
-    /// Access user endpoints.
-    pub fn user(&self) -> UserApi<'_> {
-        UserApi {
+    /// Access user endpoints (full access).
+    pub fn user(&self) -> UserApiMut<'_> {
+        UserApiMut {
             client: &self.inner,
         }
     }

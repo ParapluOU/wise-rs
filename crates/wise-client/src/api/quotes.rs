@@ -68,4 +68,25 @@ impl<'a> QuotesApiMut<'a> {
             .post(&format!("/v3/profiles/{}/quotes", profile_id), request)
             .await
     }
+
+    /// Create an unauthenticated quote (no profile ID required).
+    ///
+    /// Useful for showing indicative rates before user authenticates.
+    pub async fn create_unauthenticated(&self, request: &CreateQuote) -> Result<Quote> {
+        self.client.post("/v3/quotes", request).await
+    }
+
+    /// Update an existing quote.
+    ///
+    /// Used to add a target account to an existing quote.
+    pub async fn update(
+        &self,
+        profile_id: i64,
+        quote_id: Uuid,
+        request: &CreateQuote,
+    ) -> Result<Quote> {
+        self.client
+            .patch(&format!("/v3/profiles/{}/quotes/{}", profile_id, quote_id), request)
+            .await
+    }
 }

@@ -19,7 +19,7 @@ pub async fn list_balances(
     client: &ReadOnlyClient,
     profile_id: i64,
 ) -> Result<String, wise_client::error::Error> {
-    let balances = client.balances().list(profile_id).await?;
+    let balances = client.balances().list(profile_id, None).await?;
     Ok(serde_json::to_string_pretty(&balances).unwrap_or_else(|_| format!("{:?}", balances)))
 }
 

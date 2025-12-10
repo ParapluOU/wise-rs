@@ -34,7 +34,7 @@ pub async fn run(
 ) -> anyhow::Result<()> {
     match cmd.command {
         BalancesSubcommand::List { profile_id } => {
-            let balances = client.balances().list(profile_id).await?;
+            let balances = client.balances().list(profile_id, None).await?;
             output::print(&balances, format);
         }
         BalancesSubcommand::Get {

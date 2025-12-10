@@ -16,4 +16,4 @@ pub use quotes::{QuotesApi, QuotesApiMut};
 pub use rates::RatesApi;
 pub use recipients::{RecipientsApi, RecipientsApiMut};
 pub use transfers::{TransfersApi, TransfersApiMut};
-pub use user::UserApi;
+pub use user::{UserApi, UserApiMut};
