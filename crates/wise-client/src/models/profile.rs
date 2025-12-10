@@ -1,6 +1,6 @@
 //! Profile models.
 
-use chrono::{DateTime, NaiveDate, Utc};
+use chrono::{NaiveDate, NaiveDateTime};
 use serde::{Deserialize, Serialize};
 
 /// Profile address.
@@ -130,12 +130,12 @@ pub struct Profile {
     /// Primary email address
     #[serde(skip_serializing_if = "Option::is_none")]
     pub email: Option<String>,
-    /// Created timestamp
+    /// Created timestamp (note: API returns without timezone)
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<DateTime<Utc>>,
-    /// Updated timestamp
+    pub created_at: Option<NaiveDateTime>,
+    /// Updated timestamp (note: API returns without timezone)
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<DateTime<Utc>>,
+    pub updated_at: Option<NaiveDateTime>,
     /// Avatar URL
     #[serde(skip_serializing_if = "Option::is_none")]
     pub avatar: Option<String>,

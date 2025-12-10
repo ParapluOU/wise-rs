@@ -1,8 +1,10 @@
 //! Transfer models.
 
-use chrono::{DateTime, Utc};
+use chrono::NaiveDateTime;
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
+
+use super::datetime;
 
 /// Money transfer.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -27,7 +29,8 @@ pub struct Transfer {
     /// Exchange rate applied
     pub rate: Decimal,
     /// Creation timestamp
-    pub created: DateTime<Utc>,
+    #[serde(deserialize_with = "datetime::deserialize")]
+    pub created: NaiveDateTime,
     /// Business profile ID if applicable
     pub business: Option<i64>,
     /// Transfer details

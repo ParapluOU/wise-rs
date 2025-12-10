@@ -22,7 +22,7 @@ enum TransfersSubcommand {
         #[arg(short, long)]
         limit: Option<u32>,
         /// Number of results to skip
-        #[arg(short, long)]
+        #[arg(long)]
         offset: Option<u32>,
     },
     /// Get a specific transfer

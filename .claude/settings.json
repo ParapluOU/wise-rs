@@ -1,0 +1,7 @@
+{
+  "deny": [
+    "Read(.secrets.env)",
+    "Edit(.secrets.env)",
+    "Glob(**/.secrets.env)"
+  ]
+}

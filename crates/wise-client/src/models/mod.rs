@@ -1,5 +1,6 @@
 //! Data models for the Wise API.
 
+pub(crate) mod datetime;
 mod activity;
 mod address;
 mod balance;
